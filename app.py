@@ -184,9 +184,10 @@ class StreamlitRedirect:
     def write(self, text):
         self.output += text
         # Use custom HTML for the terminal instead of st.code for better styling
+        formatted_output = self.output.replace('\n', '<br>')
         html_content = f"""
         <div class="terminal-log" id="terminal-log">
-            {self.output.replace('\n', '<br>')}
+            {formatted_output}
         </div>
         <script>
             var objDiv = document.getElementById("terminal-log");
