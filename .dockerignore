@@ -1,0 +1,7 @@
+.git
+.gitignore
+test_venv/
+venv/
+.venv/
+__pycache__/
+*.pyc
