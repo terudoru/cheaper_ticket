@@ -1,5 +1,4 @@
-from crewai import Agent
-from langchain_openai import ChatOpenAI
+from crewai import Agent, LLM
 from tools import SearchFlightsTool, SearchLocalActivitiesTool
 import os
 
@@ -7,10 +6,10 @@ import os
 # Base URL is read from environment variable to support Docker deployments.
 llm_base_url = os.getenv("LLM_BASE_URL", "http://host.docker.internal:1234/v1")
 
-llm = ChatOpenAI(
+llm = LLM(
+    model="openai/gemma-4-31b", # Adjust if necessary based on what is loaded in LM Studio
     base_url=llm_base_url,
     api_key="lm-studio",
-    model="gemma-4-31b", # Adjust if necessary based on what is loaded in LM Studio
     temperature=0.7
 )
 
